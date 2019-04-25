@@ -1,0 +1,28 @@
+{#templates/login.html#}
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block extra-css %}
+    <link rel="stylesheet" href="{% static 'css/signIn.css' %}">
+{% endblock %}
+
+{% block body %}
+ <div class="container">
+      <form  class="form-signin" method="post">
+          {% csrf_token %}
+        <h2 class="form-signin-heading">SunFaLongCRM</h2>
+        <label for="inputEmail" class="sr-only">用户名</label>
+        <input type="text" id="" name="username" class="form-control" value="{{ username }}" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" value="{{ password }}" placeholder="Password" required>
+        <span style="color: red">{{ errmsg }}</span>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" {{ checked }}> 记住密码
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+ </div> <!-- /container -->
+{% endblock %}
